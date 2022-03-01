@@ -1,8 +1,8 @@
 package com.bakigoal.estore.product.query
 
-import com.bakigoal.estore.product.entity.ProductEntity
-import com.bakigoal.estore.product.events.ProductCreatedEvent
-import com.bakigoal.estore.product.repo.ProductRepo
+import com.bakigoal.estore.product.core.entity.ProductEntity
+import com.bakigoal.estore.product.core.events.ProductCreatedEvent
+import com.bakigoal.estore.product.core.repo.ProductRepo
 import org.axonframework.eventhandling.EventHandler
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

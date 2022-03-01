@@ -1,4 +1,4 @@
-package com.bakigoal.estore.product.entity
+package com.bakigoal.estore.product.core.entity
 
 import javax.persistence.Column
 import javax.persistence.Entity

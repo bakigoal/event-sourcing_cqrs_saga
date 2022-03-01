@@ -1,7 +1,7 @@
 package com.bakigoal.estore.product.query.rest
 
-import com.bakigoal.estore.product.dto.Product
-import com.bakigoal.estore.product.repo.ProductRepo
+import com.bakigoal.estore.product.core.dto.Product
+import com.bakigoal.estore.product.core.repo.ProductRepo
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

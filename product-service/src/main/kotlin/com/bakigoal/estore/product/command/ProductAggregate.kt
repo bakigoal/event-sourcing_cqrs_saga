@@ -1,6 +1,6 @@
 package com.bakigoal.estore.product.command
 
-import com.bakigoal.estore.product.events.ProductCreatedEvent
+import com.bakigoal.estore.product.core.events.ProductCreatedEvent
 import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier

@@ -1,6 +1,6 @@
-package com.bakigoal.estore.product.repo
+package com.bakigoal.estore.product.core.repo
 
-import com.bakigoal.estore.product.entity.ProductEntity
+import com.bakigoal.estore.product.core.entity.ProductEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.*
 
