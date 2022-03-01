@@ -1,7 +1,8 @@
 package com.bakigoal.estore.product.rest
 
 import com.bakigoal.estore.product.command.CreateProductCommand
-import com.bakigoal.estore.product.model.Product
+import com.bakigoal.estore.product.dto.Product
+import com.bakigoal.estore.product.repo.ProductRepo
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -13,7 +14,8 @@ import java.util.*
 @RequestMapping("/api/v1/product")
 class ProductController(
     val env: Environment,
-    val commandGateway: CommandGateway
+    val commandGateway: CommandGateway,
+    val productRepo: ProductRepo
 ) {
 
     companion object {
@@ -21,9 +23,9 @@ class ProductController(
     }
 
     @GetMapping
-    fun get(): String {
+    fun get(): List<Product> {
         logger.info("get product")
-        return "get product from ${env.getProperty("local.server.port")}"
+        return productRepo.findAll().map { Product(title = it.title, price = it.price, quantity = it.quantity) }
     }
 
     @PostMapping

@@ -1,4 +1,4 @@
-package com.bakigoal.estore.product.model
+package com.bakigoal.estore.product.dto
 
 data class Product(
     var title: String,
