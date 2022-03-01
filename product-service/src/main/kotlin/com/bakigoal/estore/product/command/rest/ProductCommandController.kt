@@ -1,7 +1,6 @@
 package com.bakigoal.estore.product.command.rest
 
 import com.bakigoal.estore.product.command.CreateProductCommand
-import com.bakigoal.estore.product.core.dto.Product
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -19,7 +18,7 @@ class ProductCommandController(
     }
 
     @PostMapping
-    fun createProduct(@RequestBody product: Product): String {
+    fun createProduct(@RequestBody product: ProductRequestDto): String {
         val createProductCommand = CreateProductCommand(
             productId = UUID.randomUUID().toString(),
             title = product.title,
