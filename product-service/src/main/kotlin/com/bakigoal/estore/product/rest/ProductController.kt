@@ -34,6 +34,7 @@ class ProductController(
             price = product.price,
             quantity = product.quantity
         )
+        logger.info("sending $createProductCommand")
         return commandGateway.sendAndWait(createProductCommand)
     }
 
