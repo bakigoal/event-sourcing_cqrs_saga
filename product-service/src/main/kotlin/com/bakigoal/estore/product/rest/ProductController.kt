@@ -2,11 +2,13 @@ package com.bakigoal.estore.product.rest
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.core.env.Environment
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/v1/product")
-class ProductController {
+class ProductController(@Autowired val env: Environment) {
 
     companion object{
         val logger: Logger = LoggerFactory.getLogger(ProductController::class.java)
@@ -15,7 +17,7 @@ class ProductController {
     @GetMapping
     fun get(): String {
         logger.info("get product")
-        return "get product"
+        return "get product from ${env.getProperty("local.server.port")}"
     }
 
     @PostMapping
