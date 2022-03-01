@@ -1,18 +1,9 @@
-version: "3"
+version: "3.3"
 services:
 
   axon:
     image: axoniq/axonserver
     container_name: axon_server
-    volumes:
-      - axon_data:/data
-      - axon_eventdata:/eventdata
     ports:
       - 8024:8024
       - 8124:8124
-
-volumes:
-  axon_data:
-    driver: local
-  axon_eventdata:
-    driver: local
