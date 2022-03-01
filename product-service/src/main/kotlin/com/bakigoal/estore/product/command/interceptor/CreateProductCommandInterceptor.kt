@@ -1,5 +1,6 @@
-package com.bakigoal.estore.product.command
+package com.bakigoal.estore.product.command.interceptor
 
+import com.bakigoal.estore.product.command.CreateProductCommand
 import org.axonframework.commandhandling.CommandMessage
 import org.axonframework.messaging.MessageDispatchInterceptor
 import org.slf4j.Logger
