@@ -6,6 +6,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
 import java.util.*
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api/v1/product")
@@ -18,7 +19,7 @@ class ProductCommandController(
     }
 
     @PostMapping
-    fun createProduct(@RequestBody product: ProductRequestDto): String {
+    fun createProduct(@Valid @RequestBody product: ProductRequestDto): String {
         val createProductCommand = CreateProductCommand(
             productId = UUID.randomUUID().toString(),
             title = product.title,

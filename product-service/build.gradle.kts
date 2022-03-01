@@ -23,6 +23,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
     implementation("org.axonframework:axon-spring-boot-starter:4.5.8")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 
     runtimeOnly("com.h2database:h2")
 
