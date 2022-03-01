@@ -1,16 +1,22 @@
 package com.bakigoal.estore.product.rest
 
+import com.bakigoal.estore.product.command.CreateProductCommand
+import com.bakigoal.estore.product.model.Product
+import org.axonframework.commandhandling.gateway.CommandGateway
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.env.Environment
 import org.springframework.web.bind.annotation.*
+import java.util.*
 
 @RestController
 @RequestMapping("/api/v1/product")
-class ProductController(@Autowired val env: Environment) {
+class ProductController(
+    val env: Environment,
+    val commandGateway: CommandGateway
+) {
 
-    companion object{
+    companion object {
         val logger: Logger = LoggerFactory.getLogger(ProductController::class.java)
     }
 
@@ -21,8 +27,14 @@ class ProductController(@Autowired val env: Environment) {
     }
 
     @PostMapping
-    fun createProduct(@RequestBody body: String): String {
-        return "created product $body"
+    fun createProduct(@RequestBody product: Product): String {
+        val createProductCommand = CreateProductCommand(
+            productId = UUID.randomUUID().toString(),
+            title = product.title,
+            price = product.price,
+            quantity = product.quantity
+        )
+        return commandGateway.sendAndWait(createProductCommand)
     }
 
     @PutMapping("/{id}")
