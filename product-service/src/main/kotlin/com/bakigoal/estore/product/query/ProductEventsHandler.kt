@@ -3,6 +3,7 @@ package com.bakigoal.estore.product.query
 import com.bakigoal.estore.product.core.entity.ProductEntity
 import com.bakigoal.estore.product.core.error.ProductServiceEventsException
 import com.bakigoal.estore.product.core.events.ProductCreatedEvent
+import com.bakigoal.estore.product.core.events.ProductReservedEvent
 import com.bakigoal.estore.product.core.repo.ProductRepo
 import org.axonframework.config.ProcessingGroup
 import org.axonframework.eventhandling.EventHandler
@@ -31,6 +32,15 @@ class ProductEventsHandler(
         )
         logger.info("saving product $entity")
         productRepo.save(entity)
+    }
+
+    @EventHandler
+    fun on(event: ProductReservedEvent) {
+        productRepo.findById(event.productId)
+            .ifPresent { product ->
+                product.quantity = product.quantity.minus(event.quantity)
+                productRepo.save(product)
+            }
     }
 
     @ExceptionHandler(resultType = Exception::class)

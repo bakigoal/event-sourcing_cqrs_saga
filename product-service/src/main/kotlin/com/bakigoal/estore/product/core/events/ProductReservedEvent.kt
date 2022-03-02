@@ -1,4 +1,4 @@
-package com.bakigoal.estore.order.core.events
+package com.bakigoal.estore.product.core.events
 
 data class ProductReservedEvent(
     var productId: String = "",
