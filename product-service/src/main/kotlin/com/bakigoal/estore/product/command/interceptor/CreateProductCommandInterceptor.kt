@@ -35,11 +35,15 @@ class CreateProductCommandInterceptor : MessageDispatchInterceptor<CommandMessag
             val payload = command.payload
             logger.info("Intercepted $payload")
             if (payload is CreateProductCommand) {
-                val fromDb = lookupRepo.findFirstByProductIdOrTitle(payload.productId, payload.title)
-                if (fromDb.isPresent) {
-                    throw IllegalStateException("Product already exists ${fromDb.get()}")
-                }
+                handleCreateProductCommand(payload)
             }
             command
         }
+
+    private fun handleCreateProductCommand(createProductCommand: CreateProductCommand) {
+        val fromDb = lookupRepo.findFirstByProductIdOrTitle(createProductCommand.productId, createProductCommand.title)
+        if (fromDb.isPresent) {
+            throw IllegalStateException("Product already exists ${fromDb.get()}")
+        }
+    }
 }
