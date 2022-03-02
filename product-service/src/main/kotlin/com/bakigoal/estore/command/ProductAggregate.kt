@@ -1,6 +1,6 @@
 package com.bakigoal.estore.command
 
-import com.bakigoal.estore.order.core.commands.ReserveProductCommand
+import com.bakigoal.estore.core.commands.ReserveProductCommand
 import com.bakigoal.estore.core.events.ProductCreatedEvent
 import com.bakigoal.estore.core.events.ProductReservedEvent
 import org.axonframework.commandhandling.CommandHandler

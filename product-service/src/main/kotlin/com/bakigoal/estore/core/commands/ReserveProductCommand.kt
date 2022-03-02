@@ -1,4 +1,4 @@
-package com.bakigoal.estore.order.core.commands
+package com.bakigoal.estore.core.commands
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier
 
